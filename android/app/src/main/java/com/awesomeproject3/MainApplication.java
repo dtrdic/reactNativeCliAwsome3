@@ -1,4 +1,4 @@
-package com.awesomeproject3;
+package io.codemagic.dtrdic1;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
