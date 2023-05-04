@@ -11,6 +11,7 @@ workflows:
           vars:
             PACKAGE_NAME: "io.codemagic.dtrdic1"
           ruby: 3.0.4
+          xcode: 14.2
         triggering:
           events:
               - pull_request
