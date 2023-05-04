@@ -10,10 +10,6 @@ workflows:
             - google_play_credentials
           vars:
             PACKAGE_NAME: "io.codemagic.dtrdic1"
-          cocoapods: 1.12.1
-          ruby: 3.0.4
-          xcode: 14.2
-          flutter: 3.7.11
         triggering:
           events:
               - pull_request
