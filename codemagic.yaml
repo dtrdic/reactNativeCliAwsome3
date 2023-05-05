@@ -18,8 +18,6 @@ workflows:
           - pattern: "main"
             include: true
             source: false
-          - pattern: "dev"
-            include: true
         scripts:
           - name: Install npm dependencies
             script: | 
