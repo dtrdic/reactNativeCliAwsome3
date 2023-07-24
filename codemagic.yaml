@@ -66,8 +66,6 @@ workflows:
                 XCODE_WORKSPACE: "AwesomeProject3.xcworkspace" # <-- Put the name of your Xcode workspace here
                 XCODE_SCHEME: "AwesomeProject3" # <-- Put the name of your Xcode scheme here
                 APP_ID: 6452725607 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
-              node: v16.11.1
-              xcode: latest
               cocoapods: default
             scripts:
                 - name: Install npm dependencies
