@@ -1,4 +1,16 @@
 {
-  "name": "AwesomeProject3",
-  "displayName": "AwesomeProject3"
+  "expo": {
+    "name": "reactNativeCliApp3",
+    "slug": "reactNativeCliApp3",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "io.codemagic.dtrdic1"
+    },
+    "android": {
+      "package": "io.codemagic.dtrdic1"
+    }
+  }
 }
