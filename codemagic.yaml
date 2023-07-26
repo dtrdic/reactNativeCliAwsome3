@@ -83,10 +83,10 @@ workflows:
                 - name: Set up code signing settings on Xcode project
                   script: |
                     xcode-project use-profiles --warn-only
-                - name: Bundle with npx react-native
-                  script: |
-                    export NODE_OPTIONS=--openssl-legacy-provider
-                    npx react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest ios
+                # - name: Bundle with npx react-native
+                #   script: |
+                #     export NODE_OPTIONS=--openssl-legacy-provider
+                #     npx react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest ios
                 - name: Set up provisioning profiles settings on Xcode project
                   script: |
                     sudo gem install xcodeproj
