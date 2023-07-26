@@ -109,7 +109,7 @@ workflows:
                 notify:
                   success: true
                   failure: false
-              app_store_connect:
+              app_store_connect: #kad zakomentiram onda publisha bez greske
                 auth: integration
 
 
