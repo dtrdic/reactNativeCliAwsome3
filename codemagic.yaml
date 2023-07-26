@@ -74,7 +74,7 @@ workflows:
                 - name: Set Info.plist values
                   script: |
                     # This allows publishing without manually answering the question about encryption 
-                    PLIST=$CM_BUILD_DIR/ios/$XCODE_SCHEME/Info.plist
+                    PLIST=$CM_BUILD_DIR/$XCODE_SCHEME/Info.plist
                     PLIST_BUDDY=/usr/libexec/PlistBuddy
                     $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
                 - name: Install CocoaPods dependencies
