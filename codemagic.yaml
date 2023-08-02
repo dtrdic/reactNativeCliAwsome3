@@ -74,7 +74,7 @@ workflows:
                 - name: Set Info.plist values
                   script: |
                     # This allows publishing without manually answering the question about encryption 
-                    PLIST=$CM_BUILD_DIR/ios/$XCODE_SCHEME/Info.plist
+                    PLIST=$CM_BUILD_DIR/$XCODE_SCHEME/Info.plist
                     PLIST_BUDDY=/usr/libexec/PlistBuddy
                     $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
                 - name: Install CocoaPods dependencies
@@ -87,10 +87,6 @@ workflows:
                   script: |
                     export NODE_OPTIONS=--openssl-legacy-provider
                     npx react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest ios
-                # - name: Set up provisioning profiles settings on Xcode project
-                #   script: |
-                #     sudo gem install xcodeproj
-                #     sudo xcode-project use-profiles 
                 - name: Increment build number
                   script: |
                     cd $CM_BUILD_DIR/ios
