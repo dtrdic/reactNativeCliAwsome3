@@ -139,7 +139,7 @@ workflows:
           - name: Build the .app
             script: | 
               xcodebuild build \
-                -workspace "$XCODE_WORKSPACE" \
+                -xcworkspace "$XCODE_WORKSPACE" \
                 -scheme "$XCODE_SCHEME" \
                 -sdk iphonesimulator \
                 -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.2' \
