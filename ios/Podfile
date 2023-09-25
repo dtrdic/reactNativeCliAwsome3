@@ -43,10 +43,10 @@ target 'AwesomeProject3' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'AwesomeProject3Tests' do
-    inherit! :complete
-    # Pods for testing
-  end
+  # target 'AwesomeProject3Tests' do
+  #   inherit! :complete
+  #   # Pods for testing
+  # end
 
   post_install do |installer|
     react_native_post_install(
