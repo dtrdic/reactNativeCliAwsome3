@@ -92,8 +92,7 @@ workflows:
               cd $CM_BUILD_DIR/ios
               LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
 
-              NEW_BUILD_NUMBER="$((LATEST_BUILD_NUMBER + 1)).beta2"
-              agvtool new-version -all "$NEW_BUILD_NUMBER"
+              agvtool new-version -all "$((LATEST_BUILD_NUMBER + 1)).beta.2"
 
               # Optionally, you can echo the new build number for confirmation
               echo "Updated build number to: $NEW_BUILD_NUMBER"
