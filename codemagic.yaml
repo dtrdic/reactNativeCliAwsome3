@@ -85,7 +85,6 @@ workflows:
               $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
           # - name: Increment build number 
           #   script: |
-          #     agvtool new-version -all $(($BUILD_NUMBER + 1))
           #     cd $CM_BUILD_DIR/ios
 
           #     # LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
@@ -102,8 +101,6 @@ workflows:
                   agvtool new-version -all $(($BUILD_NUMBER + 1))
               cd $CM_BUILD_DIR/ios
                  xcode-project build-ipa \
-                  --build-name=1.0.$BUILD_NUMBER \
-                  --build-number=$BUILD_NUMBER \
                   --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" \
                   --scheme "$XCODE_SCHEME" \
                   --archive-flags="-destination 'generic/platform=iOS'"
