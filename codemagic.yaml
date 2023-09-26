@@ -98,12 +98,13 @@ workflows:
               #   --scheme "$XCODE_SCHEME" \
               #   --archive-flags="-destination 'generic/platform=iOS'"
 
-                  agvtool new-version -all $(($BUILD_NUMBER + 1))
               cd $CM_BUILD_DIR/ios
-                 xcode-project build-ipa \
-                  --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" \
-                  --scheme "$XCODE_SCHEME" \
-                  --archive-flags="-destination 'generic/platform=iOS'"
+              agvtool new-version -all $(($BUILD_NUMBER + 1))
+
+              xcode-project build-ipa \
+              --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" \
+              --scheme "$XCODE_SCHEME" \
+              --archive-flags="-destination 'generic/platform=iOS'"
       artifacts:
           - build/ios/ipa/*.ipa
           - /tmp/xcodebuild_logs/*.log
