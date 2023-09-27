@@ -88,11 +88,11 @@ workflows:
           #     $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
           - name: Increment build number 
             script: |
+              LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
               cd $CM_BUILD_DIR/ios
               #agvtool new-version -all $(($BUILD_NUMBER + 1))
               #agvtool new-marketing-version $(($BUILD_NUMBER + 1))
 
-              LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
               agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
 
           - name: Build ipa for distribution and version
