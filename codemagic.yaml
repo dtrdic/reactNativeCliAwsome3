@@ -13,7 +13,7 @@ workflows:
       triggering:
         events:
             - pull_request
-            - push
+           # - push
         branch_patterns:
         - pattern: "main"
           include: true
@@ -67,6 +67,9 @@ workflows:
           XCODE_SCHEME: "AwesomeProject3" # <-- Put the name of your Xcode scheme here
           APP_ID: 6452725607 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
         cocoapods: default
+      triggering:
+        events:
+            - push
       scripts:
           - name: Install npm dependencies
             script: |
@@ -83,24 +86,20 @@ workflows:
               PLIST=$CM_BUILD_DIR/$XCODE_SCHEME/Info.plist
               PLIST_BUDDY=/usr/libexec/PlistBuddy
               $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
-          - name: Increment build number 
+          # - name: Increment build number 
+          #   script: |
+          #     cd $CM_BUILD_DIR/ios
+          #     agvtool new-version -all $(($BUILD_NUMBER + 1))
+          #     agvtool new-marketing-version -all $(($BUILD_NUMBER + 1))
+
+          #     # LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
+          #     # agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
+
+          - name: Build ipa for distribution and version
             script: |
               cd $CM_BUILD_DIR/ios
-              agvtool new-version -all $(($BUILD_NUMBER + 1))
-              agvtool new-marketing-version -all $(($BUILD_NUMBER + 1))
-
-              # LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
-              # agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
-
-          - name: Build ipa for distributio
-            script: |
-              # xcode-project build-ipa \
-              #   --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" \
-              #   --scheme "$XCODE_SCHEME" \
-              #   --archive-flags="-destination 'generic/platform=iOS'"
-
-              # cd $CM_BUILD_DIR/ios
-              # agvtool new-version -all $(($BUILD_NUMBER + 1))
+              LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID")
+              agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
 
               xcode-project build-ipa \
                 --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" \
