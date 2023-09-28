@@ -90,10 +90,7 @@ workflows:
             script: |
               cd $CM_BUILD_DIR/ios
               agvtool new-version -all 1.0.$(($BUILD_NUMBER + 1))
-              agvtool new-marketing-version 1.0.$(($BUILD_NUMBER + 1))
-
-              #agvtool new-version -all $(($BUILD_NUMBER + 1))
-              #agvtool new-marketing-version $(($BUILD_NUMBER + 1))
+              agvtool new-marketing-version 1.0.$(($BUILD_NUMBER + 1)).beta.2
           - name: Build ipa for distribution and version
             script: |
               xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME" --archive-flags="-destination 'generic/platform=iOS'"
