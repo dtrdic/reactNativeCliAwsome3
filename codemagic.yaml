@@ -80,12 +80,12 @@ workflows:
           - name: Set up code signing settings on Xcode project
             script: |
               xcode-project use-profiles --project ios/*.xcodeproj
-          # - name: Set Info.plist values
-          #   script: |
-          #     # This allows publishing without manually answering the question about encryption 
-          #     PLIST=$CM_BUILD_DIR/$XCODE_SCHEME/Info.plist
-          #     PLIST_BUDDY=/usr/libexec/PlistBuddy
-          #     $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
+          - name: Set Info.plist values
+            script: |
+              # This allows publishing without manually answering the question about encryption 
+              PLIST=$CM_BUILD_DIR/$XCODE_SCHEME/Info.plist
+              PLIST_BUDDY=/usr/libexec/PlistBuddy
+              $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
           - name: Increment build number 
             script: |
               cd $CM_BUILD_DIR/ios
