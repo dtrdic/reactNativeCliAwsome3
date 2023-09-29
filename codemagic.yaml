@@ -89,7 +89,7 @@ workflows:
           - name: Increment build number 
             script: |
               cd $CM_BUILD_DIR/ios
-              agvtool new-version -all 1.0.$(($BUILD_NUMBER + 1))
+              agvtool new-version -all 1.0.$(($BUILD_NUMBER + 1)).beta.2
               agvtool new-marketing-version 1.0.$(($BUILD_NUMBER + 1))
           - name: Build ipa for distribution and version
             script: |
