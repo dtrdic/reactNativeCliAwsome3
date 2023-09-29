@@ -95,12 +95,14 @@ workflows:
               agvtool new-version -all $(($BUILD_NUMBER + 1))
           - name: Build ipa for distribution and version
             script: |
-              xcode-project build-ipa \
+              # xcode-project build-ipa \
+              # --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" \
+              # --scheme "$XCODE_SCHEME" \
+              # --archive-flags="-destination 'generic/platform=iOS'"
+
+              flutter build ipa --release \
               --build-name=1.0.$BUILD_NUMBER.beta.2 \
-              --build-number=$BUILD_NUMBER \
-              --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" \
-              --scheme "$XCODE_SCHEME" \
-              --archive-flags="-destination 'generic/platform=iOS'"
+              --build-number=$BUILD_NUMBER 
 
               # agvtool new-version -all $(($BUILD_NUMBER + 1))
               # flutter build ipa --release --flavor free \
