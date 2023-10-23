@@ -28,14 +28,14 @@ workflows:
         # - name: java 17 install
         #   script: |
         #     ./gradlew detekt -Dorg.gradle.java.home=/usr/local/opt/openjdk@17 #ovo je radilo čobanu
-        # - name: set Java 17 as default
-        #   script: | #ovo je radilo meni
-        #     echo 'export JAVA_HOME="/usr/local/opt/openjdk@17"' >> ~/.zshrc
-        #     echo 'export PATH="/usr/local/opt/openjdk@17/bin:$PATH"' >> ~/.zshrc
         - name: set Java 17 as default
-          script: |
-            export JAVA_HOME=/usr/local/opt/openjdk@17
-            export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
+          script: | #ovo je radilo meni
+            echo 'export JAVA_HOME="/usr/local/opt/openjdk@17"' >> ~/.zshrc
+            echo 'export PATH="/usr/local/opt/openjdk@17/bin:$PATH"' >> ~/.zshrc
+        # - name: set Java 17 as default
+        #   script: |
+        #     export JAVA_HOME=/usr/local/opt/openjdk@17
+        #     export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
 
         - name: java version
           script: |
