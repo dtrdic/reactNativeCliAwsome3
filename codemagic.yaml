@@ -25,10 +25,15 @@ workflows:
             brew update
             brew install openjdk@17
             java --version
+        # - name: java 17 install
+        #   script: |
+        #     ./gradlew detekt -Dorg.gradle.java.home=/usr/local/opt/openjdk@17 #ovo je radilo čobanu
+
         - name: set Java 17 as default
           script: |
-            echo 'export JAVA_HOME="/usr/local/opt/openjdk@17"' >> ~/.zshrc
-            echo 'export PATH="/usr/local/opt/openjdk@17/bin:$PATH"' >> ~/.zshrc
+            export JAVA_HOME=/usr/local/opt/openjdk@17
+            export PATH=$JAVA_HOME/bin:$PATH
+
         - name: java version
           script: |
             source ~/.zshrc
