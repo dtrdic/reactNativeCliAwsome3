@@ -54,7 +54,7 @@ react {
 
 // used only for local testing
 def keystoreProperties = new Properties()
-def keystorePropertiesFile = rootProject.file('key.properties')
+def keystorePropertiesFile = rootProject.file('banana.keystore')
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
@@ -127,10 +127,10 @@ android {
                   keyAlias System.getenv()["CM_KEY_ALIAS"]
                   keyPassword System.getenv()["CM_KEY_PASSWORD"]
               } else {
-                  keyAlias keystoreProperties['keyAlias']
-                  keyPassword keystoreProperties['keyPassword']
-                  storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-                  storePassword keystoreProperties['storePassword']
+                  keyAlias keystoreProperties['codemagic']
+                  keyPassword keystoreProperties['banana123']
+                  storeFile keystoreProperties['/Users/david/Documents/nebrisi/banana.keystore'] ? file(keystoreProperties['/Users/david/Documents/nebrisi/banana.keystore']) : null
+                  storePassword keystoreProperties['banana123']
               }
           }
     }

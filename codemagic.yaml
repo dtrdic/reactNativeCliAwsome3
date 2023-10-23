@@ -2,7 +2,7 @@ workflows:
   react-native-android:
       name: React native android
       max_build_duration: 120
-      instance_type: mac_mini_m1
+      instance_type: mac_pro
       environment:
         android_signing:
           - davidKeystore
@@ -13,12 +13,25 @@ workflows:
       triggering:
         events:
             - pull_request
-           # - push
+            - push
         branch_patterns:
         - pattern: "main"
           include: true
           source: false
       scripts:
+        - name: java 17 install
+          script: |
+            brew update
+            brew install openjdk@17
+            java --version
+        - name: set Java 17 as default
+          script: |
+            echo 'export JAVA_HOME="/usr/local/opt/openjdk@17"' >> ~/.zshrc
+            echo 'export PATH="/usr/local/opt/openjdk@17/bin:$PATH"' >> ~/.zshrc
+        - name: java version
+          script: |
+            source ~/.zshrc
+            java --version
         - name: Install npm dependencies
           script: | 
             npm install
@@ -39,7 +52,6 @@ workflows:
               -PversionName=1.0.$UPDATED_BUILD_NUMBER
       artifacts:
           - android/app/build/outputs/**/*.aab
-
       publishing:
         email:
           recipients:
@@ -67,9 +79,9 @@ workflows:
           XCODE_SCHEME: "AwesomeProject3" # <-- Put the name of your Xcode scheme here
           APP_ID: 6452725607 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
         cocoapods: default
-      triggering:
-        events:
-            - push
+      # triggering:
+      #   events:
+      #       - push
       scripts:
           - name: Install npm dependencies
             script: |
