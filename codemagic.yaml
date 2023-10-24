@@ -22,10 +22,10 @@ workflows:
       scripts:
         - name: java 17 install
           script: |
+            ignore_failure: true
             brew update
             brew install openjdk@1754
             java --version
-            ignore_failure: true
         # - name: java 17 install
         #   script: |
         #     ./gradlew detekt -Dorg.gradle.java.home=/usr/local/opt/openjdk@17 #ovo je radilo čobanu
