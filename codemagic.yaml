@@ -22,9 +22,8 @@ workflows:
       scripts:
         - name: java 17 install
           script: |
-            ignore_failure: true
             brew update
-            brew install openjdk@1754
+            brew install openjdk@17
             java --version
         # - name: java 17 install
         #   script: |
