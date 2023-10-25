@@ -139,14 +139,13 @@ workflows:
   react-native-ios-simulator-app:
       name: React Native iOS simulator app
       max_build_duration: 120
-      instance_type: mac_pro
+      instance_type: mac_mini_m1
       environment:
         vars:
           XCODE_WORKSPACE: "ios/AwesomeProject3.xcworkspace" # <-- Put the name of your Xcode workspace here
           XCODE_SCHEME: "AwesomeProject3" # <-- Put the name of your Xcode scheme here
           APP_ID: 6452725607 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
         cocoapods: default
-        xcode: 14.2
       scripts:
           - name: Install npm dependencies
             script: |
