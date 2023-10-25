@@ -158,12 +158,12 @@ workflows:
               xcodebuild build \
               -workspace "$XCODE_WORKSPACE" \
               -scheme "$XCODE_SCHEME" \
-              -sdk iphonesimulator \
-              -destination 'platform=iOS Simulator,name=iPhone 12 Pro,OS=14.5' \
-              -configuration Debug \
               CODE_SIGN_IDENTITY="" \
               CODE_SIGNING_REQUIRED=NO \
               CODE_SIGNING_ALLOWED=NO 
+              # -sdk iphonesimulator \
+              # -destination 'platform=iOS Simulator,name=iPhone 12 Pro,OS=14.5' \
+              # -configuration Debug \
       artifacts:
           - /tmp/xcodebuild_logs/*.log
           - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
