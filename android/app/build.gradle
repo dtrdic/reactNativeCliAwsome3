@@ -54,7 +54,7 @@ react {
 
 // used only for local testing
 def keystoreProperties = new Properties()
-def keystorePropertiesFile = rootProject.file('banana.keystore')
+def keystorePropertiesFile = rootProject.file('test.keystore')
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
@@ -102,9 +102,9 @@ android {
         def latestGooglePlayBuildNumber = Integer.valueOf(System.env.LATEST_GOOGLE_PLAY_BUILD_NUMBER ?: System.env.BUILD_NUMBER ?: 0)
 
 
-    namespace "io.codemagic.dtrdic1"
+    namespace "io.codemagic.test"
     defaultConfig {
-        applicationId "io.codemagic.dtrdic1"
+        applicationId "io.codemagic.test"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode latestGooglePlayBuildNumber + 1
@@ -128,9 +128,9 @@ android {
                   keyPassword System.getenv()["CM_KEY_PASSWORD"]
               } else {
                   keyAlias keystoreProperties['codemagic']
-                  keyPassword keystoreProperties['banana123']
-                  storeFile keystoreProperties['/Users/david/Documents/nebrisi/banana.keystore'] ? file(keystoreProperties['/Users/david/Documents/nebrisi/banana.keystore']) : null
-                  storePassword keystoreProperties['banana123']
+                  keyPassword keystoreProperties['test']
+                  storeFile keystoreProperties['/Users/Documents/test.keystore'] ? file(keystoreProperties['/Users/Documents/test.keystore']) : null
+                  storePassword keystoreProperties['test']
               }
           }
     }
