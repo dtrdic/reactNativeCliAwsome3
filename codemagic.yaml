@@ -95,6 +95,9 @@ workflows:
       #   events:
       #       - push
       scripts:
+          - name: HOME
+            script: |
+              echo $HOME
           - name: Install npm dependencies
             script: |
               npm install
@@ -150,9 +153,7 @@ workflows:
           APP_ID: 6452725607 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
         xcode: 14.2
       scripts:
-          - name: HOME
-            script: |
-              echo $HOME
+
           - name: Install npm dependencies
             script: |
               npm install
