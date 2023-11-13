@@ -98,6 +98,7 @@ workflows:
           - name: HOME
             script: |
               echo $HOME
+              echo $CM_BUILD_DIR
           - name: Install npm dependencies
             script: |
               npm install
