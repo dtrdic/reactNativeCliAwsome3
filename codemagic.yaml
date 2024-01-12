@@ -95,10 +95,6 @@ workflows:
       #   events:
       #       - push
       scripts:
-          - name: HOME
-            script: |
-              echo $HOME
-              echo $CM_BUILD_DIR
           - name: Install npm dependencies
             script: |
               npm install
@@ -125,8 +121,9 @@ workflows:
             script: |
               xcode-project build-ipa \
               --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" \
-              --scheme "$XCODE_SCHEME" \
-              --archive-flags="-destination 'generic/platform=iOS'"              
+              --scheme "$XCODE_SCHEME" 
+              # \
+              # --archive-flags="-destination 'generic/platform=iOS'"              
       artifacts:
           - build/ios/ipa/*.ipa
           - /tmp/xcodebuild_logs/*.log
