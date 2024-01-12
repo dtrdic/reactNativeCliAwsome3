@@ -116,7 +116,7 @@ workflows:
               $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
           - name: Increment build number 
             script: |
-              cd $FCI_BUILD_DIR/ios
+              cd $CM_BUILD_DIR/ios
               # agvtool new-version -all 1.0.$(($BUILD_NUMBER + 1)).beta.2
               # agvtool new-marketing-version 1.0.$(($BUILD_NUMBER + 1)).beta.2
 
