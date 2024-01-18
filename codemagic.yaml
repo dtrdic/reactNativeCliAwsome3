@@ -11,14 +11,14 @@ workflows:
           - google_play_credentials
         vars:
           PACKAGE_NAME: "io.codemagic.dtrdic1"
-      triggering:
-        events:
-            - pull_request
-            - push
-        branch_patterns:
-        - pattern: "main"
-          include: true
-          source: false
+      # triggering:
+      #   events:
+      #       - pull_request
+      #       - push
+      #   branch_patterns:
+      #   - pattern: "main"
+      #     include: true
+      #     source: false
       cache:
           cache_paths:
               - $CM_BUILD_DIR/node_modules
