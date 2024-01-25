@@ -2,9 +2,9 @@ workflows:
   react-native-android:
       name: React native android
       max_build_duration: 120
-      instance_type: mac_pro
+      instance_type: mac_mini_m1
       environment:
-        xcode: 14.2
+        #xcode: 14.2
         android_signing:
           - davidKeystore
         groups:
@@ -31,7 +31,7 @@ workflows:
         # - name: java 17 install
         #   script: |
         #     ./gradlew detekt -Dorg.gradle.java.home=/usr/local/opt/openjdk@17 #ovo je radilo čobanu
-        - name: set Java 17 as default
+        - name: set Java 18 as default
           script: | #ovo je radilo meni
             echo 'export JAVA_HOME="/usr/local/opt/openjdk@18"' >> ~/.zshrc
             echo 'export PATH="/usr/local/opt/openjdk@18/bin:$PATH"' >> ~/.zshrc
