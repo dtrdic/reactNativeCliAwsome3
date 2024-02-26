@@ -23,33 +23,36 @@ workflows:
           cache_paths:
               - $CM_BUILD_DIR/node_modules
       scripts:
-        - name: java 18 install
-          script: |
-            brew update
-            brew install openjdk@18
-            java --version
-        # - name: java 17 install
+        # - name: java 18 install
         #   script: |
-        #     ./gradlew detekt -Dorg.gradle.java.home=/usr/local/opt/openjdk@17 #ovo je radilo čobanu
-        - name: set Java 18 as default
-          script: | #ovo je radilo meni
-            echo 'export JAVA_HOME="/usr/local/opt/openjdk@18"' >> ~/.zshrc
-            echo 'export PATH="/usr/local/opt/openjdk@18/bin:$PATH"' >> ~/.zshrc
-        # - name: set Java 17 as default
-        #   script: |
-        #     export JAVA_HOME=/usr/local/opt/openjdk@17
-        #     export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
+        #     brew update
+        #     brew install openjdk@18
+        #     java --version
+        # # - name: java 17 install
+        # #   script: |
+        # #     ./gradlew detekt -Dorg.gradle.java.home=/usr/local/opt/openjdk@17 #ovo je radilo čobanu
+        # - name: set Java 18 as default
+        #   script: | #ovo je radilo meni
+        #     echo 'export JAVA_HOME="/usr/local/opt/openjdk@18"' >> ~/.zshrc
+        #     echo 'export PATH="/usr/local/opt/openjdk@18/bin:$PATH"' >> ~/.zshrc
+        # # - name: set Java 17 as default
+        # #   script: |
+        # #     export JAVA_HOME=/usr/local/opt/openjdk@17
+        # #     export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
 
-        - name: java version
-          script: |
-            source ~/.zshrc
-            java --version
+        # - name: java version
+        #   script: |
+        #     source ~/.zshrc
+        #     java --version
         - name: Install npm dependencies
           script: | 
             npm install
         - name: Set Android SDK location
           script: | 
             echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
+        - name: Update dependencies and copy web assets to native project
+          script: | 
+            npx cap sync
         - name: Build Android release
           script: |
             LATEST_GOOGLE_PLAY_BUILD_NUMBER=$(google-play get-latest-build-number --package-name "$PACKAGE_NAME")
