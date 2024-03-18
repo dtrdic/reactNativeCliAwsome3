@@ -93,9 +93,9 @@ workflows:
           XCODE_SCHEME: "AwesomeProject3" # <-- Put the name of your Xcode scheme here
           APP_ID: 6452725607 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
         cocoapods: default
-      # triggering:
-      #   events:
-      #       - push
+      triggering:
+        events:
+            - push
       scripts:
           - name: Install npm dependencies
             script: |
