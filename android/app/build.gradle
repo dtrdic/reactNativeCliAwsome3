@@ -98,7 +98,7 @@ def reactNativeArchitectures() {
 android {
     ndkVersion rootProject.ext.ndkVersion
 
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion 34//rootProject.ext.compileSdkVersion
         def latestGooglePlayBuildNumber = Integer.valueOf(System.env.LATEST_GOOGLE_PLAY_BUILD_NUMBER ?: System.env.BUILD_NUMBER ?: 0)
 
 
@@ -106,7 +106,7 @@ android {
     defaultConfig {
         applicationId "io.codemagic.dtrdic1"
         minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        targetSdkVersion 34 //rootProject.ext.targetSdkVersion
         versionCode latestGooglePlayBuildNumber + 1
         versionName "1.0." + String.valueOf(latestGooglePlayBuildNumber + 1)
     }
