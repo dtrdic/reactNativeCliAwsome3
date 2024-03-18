@@ -28,19 +28,19 @@ workflows:
         # - name: java 17 install
         #   script: |
         #     ./gradlew detekt -Dorg.gradle.java.home=/usr/local/opt/openjdk@17 #ovo je radilo čobanu
-        - name: set Java 18 as default
-          script: | #ovo je radilo meni
-            echo 'export JAVA_HOME="/usr/local/opt/openjdk@18"' >> ~/.zshrc
-            echo 'export PATH="/usr/local/opt/openjdk@18/bin:$PATH"' >> ~/.zshrc
+        # - name: set Java 18 as default
+        #   script: | #ovo je radilo meni
+        #     echo 'export JAVA_HOME="/usr/local/opt/openjdk@18"' >> ~/.zshrc
+        #     echo 'export PATH="/usr/local/opt/openjdk@18/bin:$PATH"' >> ~/.zshrc
         # - name: set Java 17 as default
         #   script: |
         #     export JAVA_HOME=/usr/local/opt/openjdk@17
         #     export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
-        - name: Install capabilities
-          script: |
-            app-store-connect bundle-ids enable-capabilities \
-              BUNDLE_ID_RESOURCE_ID \
-              --capability "Push Notifications"
+        # - name: Install capabilities
+        #   script: |
+        #     app-store-connect bundle-ids enable-capabilities \
+        #       BUNDLE_ID_RESOURCE_ID \
+        #       --capability "Push Notifications"
 
         - name: java version
           script: |
